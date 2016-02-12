@@ -1,0 +1,46 @@
+{
+  "name": "vo-task",
+  "version": "1.0.0",
+  "description": "Wraps data.task around VO async function",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run lint",
+    "lint": "standard --verbose *.js",
+    "commit": "commit-wizard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bahmutov/vo-task.git"
+  },
+  "keywords": [
+    "vo",
+    "data.task",
+    "task",
+    "async",
+    "promise",
+    "generator"
+  ],
+  "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bahmutov/vo-task/issues"
+  },
+  "homepage": "https://github.com/bahmutov/vo-task#readme",
+  "dependencies": {
+    "data.task": "^3.0.0",
+    "vo": "^1.0.3"
+  },
+  "config": {
+    "pre-git": {
+      "commit-msg": ["simple"],
+      "pre-commit": ["npm test"],
+      "pre-push": [],
+      "post-commit": [],
+      "post-merge": []
+    }
+  },
+  "devDependencies": {
+    "pre-git": "^3.3.0",
+    "standard": "^6.0.4"
+  }
+}
