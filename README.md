@@ -1,5 +1,5 @@
 # vo-task
-> Wraps data.task around vO async function
+> Wraps data.task around VO async function
 
 [![NPM][vo-task-icon] ][vo-task-url]
 
