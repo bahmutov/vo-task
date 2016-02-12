@@ -1,16 +1,17 @@
 {
   "name": "vo-task",
-  "version": "1.0.0",
   "description": "Wraps data.task around VO async function",
   "main": "index.js",
+  "version": "0.0.0-semantic-release",
   "scripts": {
     "test": "npm run lint",
     "lint": "standard --verbose *.js",
-    "commit": "commit-wizard"
+    "commit": "commit-wizard",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bahmutov/vo-task.git"
+    "url": "https://github.com/bahmutov/vo-task.git"
   },
   "keywords": [
     "vo",
@@ -32,8 +33,12 @@
   },
   "config": {
     "pre-git": {
-      "commit-msg": ["simple"],
-      "pre-commit": ["npm test"],
+      "commit-msg": [
+        "simple"
+      ],
+      "pre-commit": [
+        "npm test"
+      ],
       "pre-push": [],
       "post-commit": [],
       "post-merge": []
@@ -41,6 +46,7 @@
   },
   "devDependencies": {
     "pre-git": "^3.3.0",
-    "standard": "^6.0.4"
+    "standard": "^6.0.4",
+    "semantic-release": "^4.3.5"
   }
 }
