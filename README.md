@@ -6,6 +6,47 @@
 [![Build status][vo-task-ci-image] ][vo-task-ci-url]
 [![semantic-release][semantic-image] ][semantic-url]
 
+## Install and use
+
+    npm install --save vo-task
+    const voTask = require('vo-task')
+
+## Use
+
+Suppose you have a plain function, like `add(a, b) { return a + b }`.
+You can convert this function into a Task-returning function
+
+```js
+function add(a, b) { return a + b }
+const makeTask = voTask(add)
+const addTask = makeTask(2, 3)
+// nothing has been executed so far
+```
+
+Or you have a promise-returning function that you want to convert into a Task-returning function
+
+```js
+function addAsync(a, b) {
+  return Promise.resolve(a + b)
+}
+const makeTask = voTask(addAsync)
+const addTask = makeTask(2, 3)
+// nothing has been executed so far
+```
+
+Or any other asynchronous function (like generators, callbacks, etc - see 
+[vo](https://www.npmjs.com/package/vo) docs for all supported types).
+Then you can combine the tasks into longer tasks *before executing anything*.
+The original function only runs when you call `task.fork(onError, onSuccess)` method.
+
+```js
+addTask.fork(console.error, function (result) {
+  console.log('add result', result)
+})
+```
+
+`vo-task` makes longer chains across multiple async styles easy.
+
 ## Related projects
 
 * [data.task](https://github.com/folktale/data.task) - Task monad for delayed computation
@@ -61,5 +102,3 @@ OTHER DEALINGS IN THE SOFTWARE.
 [vo-task-ci-url]: https://travis-ci.org/bahmutov/vo-task
 [semantic-image]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
 [semantic-url]: https://github.com/semantic-release/semantic-release
-
-

@@ -2,6 +2,10 @@ const vo = require('vo')
 const Task = require('data.task')
 
 function voTask (fn) {
+  if (typeof fn !== 'function') {
+    throw new Error('Expected function as first argument to vo-task')
+  }
+
   // wait for arguments
   return function () {
     const args = Array.prototype.slice.call(arguments, 0)
